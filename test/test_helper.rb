@@ -32,5 +32,5 @@ class ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: user.email,
                                           password: password, 
                                           remember_me: remember_me } }
-  end 
+  end
 end

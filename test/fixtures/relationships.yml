@@ -1,1 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  follower: tester
+  followed: lana
+
+two:
+  follower: tester
+  followed: boring
+
+three:
+  follower: lana
+  followed: tester
+
+four:
+  follower: seconder
+  followed: tester

@@ -21,6 +21,13 @@ boring:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+lana:
+  name: Lana Example
+  email: lana@example.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>  
+
 unactiver:
   name: Unactiver Example
   email: unactiver@example.com

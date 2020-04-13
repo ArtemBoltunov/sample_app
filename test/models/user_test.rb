@@ -98,6 +98,7 @@ class UserTest < ActiveSupport::TestCase
     tester = users(:tester)
     seconder = users(:seconder)
     lana = users(:lana)
+    microposter = users(:microposter)
     # Posts from followed user
     lana.microposts.each do |post_following|
       assert tester.feed.include?(post_following)
@@ -109,6 +110,10 @@ class UserTest < ActiveSupport::TestCase
     # Posts from unfollowed user
     seconder.microposts.each do |post_unfollowed|
       assert_not tester.feed.include?(post_unfollowed)
+    end
+    # Posts from self without followers
+    microposter.microposts.each do |post_self| 
+      assert microposter.feed.include?(post_self)
     end
   end
 end

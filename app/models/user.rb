@@ -80,6 +80,8 @@ class User < ApplicationRecord
     def feed
         following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
         Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+        # suggested from exersise variant does not work in case user does not have followers
+        # Micropost.joins(user: :followers).where("relationships.follower_id = :id or microposts.user_id = :id", {id: id})
     end
 
     # Follows a user.

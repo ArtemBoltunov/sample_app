@@ -93,4 +93,22 @@ class UserTest < ActiveSupport::TestCase
     tester.unfollow(seconder)
     assert_not tester.following?(seconder)
   end
+
+  test "feed should have the right posts" do
+    tester = users(:tester)
+    seconder = users(:seconder)
+    lana = users(:lana)
+    # Posts from followed user
+    lana.microposts.each do |post_following|
+      assert tester.feed.include?(post_following)
+    end
+    # Posts from self
+    tester.microposts.each do |post_self| 
+      assert tester.feed.include?(post_self)
+    end
+    # Posts from unfollowed user
+    seconder.microposts.each do |post_unfollowed|
+      assert_not tester.feed.include?(post_unfollowed)
+    end
+  end
 end
